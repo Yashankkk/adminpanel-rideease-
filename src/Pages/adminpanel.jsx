@@ -10,6 +10,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import User from './user';
 import Contact from './contact'
 import axios from 'axios';
+import Bookings from './bookings';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -25,7 +26,7 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem('User', 'user', <UserOutlined />), // Use lowercase keys
   getItem('Contact', 'contact', <TeamOutlined />),
-  getItem('Files', 'files', <FileOutlined />),
+  getItem('Bookings', 'bookings', <FileOutlined />),
 ];
 
 const App = () => {
@@ -46,8 +47,8 @@ const App = () => {
         return <User />;
       case 'contact':
         return <Contact />;
-      case 'files':
-        return 'Here are your files';
+      case 'bookings':
+        return <Bookings />;;
       default:
         return <div>Welcome to Dashboard</div>;
     }

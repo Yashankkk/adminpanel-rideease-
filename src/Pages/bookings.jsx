@@ -8,16 +8,16 @@ const User = () => {
   const [editingKey, setEditingKey] = useState('');
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchcarDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/auth/admin`);
+        const res = await axios.get(`http://localhost:3000/api/auth/booking`);
         const usersWithKeys = res.data.map((user) => ({ ...user, key: user._id }));
         setDataSource(usersWithKeys);
       } catch (err) {
-        message.error('Failed to load users');
+        message.error('Failed to load car details');
       }
     };
-    fetchUsers();
+    fetchcarDetails();
   }, []);
 
   const isEditing = (record) => record.key === editingKey;
@@ -39,7 +39,7 @@ const User = () => {
       if (index > -1) {
         const item = newData[index];
         const updated = { ...item, ...row };
-        await axios.put(`http://localhost:3000/api/auth/adminupdate/${key}`, updated);
+        await axios.put(`http://localhost:3000/api/auth/bookingupdate/${key}`, updated);
         newData.splice(index, 1, updated);
         setDataSource(newData);
         setEditingKey('');
@@ -53,7 +53,7 @@ const User = () => {
 
   const handleDelete = async (key) => {
     try {
-      await axios.delete(`http://localhost:3000/api/auth/admindelete/${key}`);
+      await axios.delete(`http://localhost:3000/api/auth/bookingdelete/${key}`);
       setDataSource(dataSource.filter((item) => item.key !== key));
       message.success('User deleted');
     } catch (err) {
@@ -64,23 +64,33 @@ const User = () => {
 
   const columns = [
     {
-      title: 'Full Name',
-      dataIndex: 'fullName',
+      title: 'Car Model',
+      dataIndex: 'carModel',
       editable: true,
     },
     {
-      title: 'Username',
-      dataIndex: 'username',
+      title: 'Pick Up',
+      dataIndex: 'pickupLocation',
       editable: true,
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
+      title: 'Drop Off',
+      dataIndex: 'dropoffLocation',
       editable: true,
     },
     {
-      title: 'Phone Number',
-      dataIndex: 'phone',
+      title: 'Pick Up Date',
+      dataIndex: 'pickupDate',
+      editable: true,
+    },
+    {
+      title: 'Return Date',
+      dataIndex: 'returnDate',
+      editable: true,
+    },
+    {
+      title: 'Price Per Day',
+      dataIndex: 'pricePerDay',
       editable: true,
     },
     {
@@ -155,7 +165,7 @@ const User = () => {
 
   return (
     <div>
-      <h2>Editable User Table</h2>
+      <h2>Editable Booking Table</h2>
       <Form form={form} component={false}>
         <Table
           components={{

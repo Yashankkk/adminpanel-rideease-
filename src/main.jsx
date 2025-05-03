@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import AdminPanel from './Pages/adminpanel';
 import User from './Pages/user';
 import Contact from './Pages/contact';
+import Bookings from './Pages/bookings';
 
 // import App from './App.jsx'
 
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/" element={<AdminPanel />} />
       <Route path="/user" element={<User />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/bookings" element={<Bookings />} />
       </Routes>
     </BrowserRouter>
   </div>
