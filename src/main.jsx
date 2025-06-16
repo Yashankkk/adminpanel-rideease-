@@ -7,6 +7,8 @@ import AdminPanel from './Pages/adminpanel';
 import User from './Pages/user';
 import Contact from './Pages/contact';
 import Bookings from './Pages/bookings';
+import Review from './Pages/review';
+import Cardetails from './Pages/cardetail';
 
 // import App from './App.jsx'
 
@@ -19,6 +21,8 @@ createRoot(document.getElementById('root')).render(
       <Route path="/user" element={<User />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/bookings" element={<Bookings />} />
+      <Route path="/review" element={<Review />} />
+      <Route path="/cardetail" element={<Cardetails />} />
       </Routes>
     </BrowserRouter>
   </div>

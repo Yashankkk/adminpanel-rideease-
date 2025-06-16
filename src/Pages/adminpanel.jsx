@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import {
-  DesktopOutlined,
   FileOutlined,
-  PieChartOutlined,
   TeamOutlined,
   UserOutlined,
+  MessageOutlined,
+  InfoCircleOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import User from './user';
 import Contact from './contact'
 import axios from 'axios';
 import Bookings from './bookings';
+import Review from './review';
+import Cardetails from './cardetail';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -27,6 +29,8 @@ const items = [
   getItem('User', 'user', <UserOutlined />), // Use lowercase keys
   getItem('Contact', 'contact', <TeamOutlined />),
   getItem('Bookings', 'bookings', <FileOutlined />),
+  getItem('Reviews', 'reviews', <MessageOutlined />),
+  getItem('Car Details', 'cardetail', <InfoCircleOutlined />),
 ];
 
 const App = () => {
@@ -48,9 +52,13 @@ const App = () => {
       case 'contact':
         return <Contact />;
       case 'bookings':
-        return <Bookings />;;
+        return <Bookings />;
+      case 'reviews':
+        return <Review />;
+      case 'cardetail':
+        return <Cardetails />;
       default:
-        return <div>Welcome to Dashboard</div>;
+        return <div>Welcome Admin</div>;
     }
   };
 
@@ -95,7 +103,7 @@ const App = () => {
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          RideEase ©{new Date().getFullYear()} Created by RideEase
         </Footer>
       </Layout>
     </Layout>
